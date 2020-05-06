@@ -27,6 +27,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 int maxProfit(int* prices, int pricesSize){
 
+	//cd is used to determine whether prices array is in descending order or not.
+	//cd=0 ---> ascending
     int min=prices[0],cd=0;
     int i=0;
     for(i=1;i<pricesSize;i++)
@@ -40,8 +42,11 @@ int maxProfit(int* prices, int pricesSize){
     }
     if(cd==0)
     {
+		//return the difference between last and first element when prices array is in ascending order.
         return prices[pricesSize-1]-prices[0];
     }
+	//cd is used to determine whether prices array is in descending order or not.
+	//cd=0 ---> descending
     cd=0;
     int max=prices[0];
     for(i=1;i<pricesSize;i++)
@@ -55,13 +60,16 @@ int maxProfit(int* prices, int pricesSize){
     }
     if(cd==0)
     {
+		//profit will be zero when prices array is in descending order
         return 0;
     }
+	//creating array of difference of elements of prices array.
     int arr[pricesSize-1];
     for(i=1;i<pricesSize;i++)
     {
         arr[i-1]=prices[i]-prices[i-1];
     }
+	//sum of only positive elements of difference's array(arr)
     int sum=0;
     for(i=0;i<pricesSize-1;i++)
     {
