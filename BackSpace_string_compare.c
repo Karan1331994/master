@@ -27,6 +27,20 @@ Explanation: S becomes "c" while T becomes "b".
 */
 
 
+/*
+Ideas:
+
+--- Deletes character at position 4 -----
+    str.erase(str.begin() + 4);
+	
+	Before erase : Hello World!
+	After erase : Hell World!
+
+	The idea is to move backwards from last in a string and delete both # and character after it while moving backwards.
+	
+*/
+
+
 
 #include <iostream>
 #include <string>
@@ -39,18 +53,17 @@ string findOriginal(string S)
 		int i,k=0;
         for(i=S.length()-1;i>=0;i--)
         {
-            if((i)>=0 &&S[i]=='#')   //a#b##c
+            if((i)>=0 &&S[i]=='#')  //bound-checking and required condition
             {
-                k++;
+                k++;  //to count no. of hashes
                 S.erase(S.begin()+i);
-                // cout<<"first S: "<<i<<" & "<<S<<endl;
-                                    int j=i;
+                int j=i;
 
-                if((j-1)>=0 && S[j-1]!='#')
+                if((j-1)>=0 && S[j-1]!='#') //bound-checking and required condition
                 {
                     while(k!=0&&j!=0)
                     {
-                    if((j-1)>=0 && S[j-1]=='#')
+                    if((j-1)>=0 && S[j-1]=='#') //bound-checking and required condition
                     break;
                     S.erase(S.begin()+(--j));
                     k--;
@@ -64,7 +77,6 @@ string findOriginal(string S)
                 
             }
         }
-        // cout<<"output is: "<<S<<endl;
         return S;
 }
 
