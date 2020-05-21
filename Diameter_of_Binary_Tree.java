@@ -44,7 +44,7 @@ class Solution {
         return max(lheight+rheight,max(ld,rd));		/* Return max of following three:
 														1) Diameter of left subtree 
 														2) Diameter of right subtree 
-														3) Height of left subtree + height of right subtree + 1
+														3) Height of left subtree + height of right subtree
 														*/ 
         
     }
